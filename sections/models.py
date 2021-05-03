@@ -1,6 +1,6 @@
 from django.db import models
+
 from core.models import TimeStampModel
-# Create your models here.
 
 
 class Section(TimeStampModel):
@@ -16,6 +16,3 @@ class Section(TimeStampModel):
         db_table = "sections"
         verbose_name = "담당지역"
         verbose_name_plural = "담당지역"
-
-
-

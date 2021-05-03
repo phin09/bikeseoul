@@ -1,4 +1,5 @@
 from django.db import models
+
 from core.models import TimeStampModel, RealCharField
 
 
@@ -27,12 +28,3 @@ class Report(TimeStampModel):
         db_table = "reports"
         verbose_name = "고장 신고"
         verbose_name_plural = "고장 신고"
-
-        
-
-    
-
-
-
-
-
