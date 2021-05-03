@@ -1,4 +1,5 @@
 from django.db import models
+
 from core.models import TimeStampModel, RealCharField
 
 
@@ -42,13 +43,3 @@ class StationLog(TimeStampModel):
     class Meta:
         db_table = "station_logs"
         ordering = ["created_at",]
-
-
-
-
-
-
-
-
-
-

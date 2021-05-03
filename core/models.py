@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class TimeStampModel(models.Model):
 
@@ -21,8 +20,3 @@ class RealCharField(models.CharField):
         varchar = super().db_type(connection)
         char = varchar.replace('varchar', 'char')
         return char
-
-
-
-    
-    
