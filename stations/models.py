@@ -16,7 +16,7 @@ class Station(TimeStampModel):
     code = RealCharField("코드", unique=True, max_length=9)
     name = models.CharField("이름", max_length=100)
     lot_address = models.CharField("지번 주소", max_length=100, null=True, blank=True)
-    street_address = models.CharField("도로명 주소", max_length=100)
+    street_address = models.CharField("도로명 주소", max_length=100, null=True, blank=True)
     detail_address = models.CharField("상세 주소", max_length=100, null=True, blank=True)
     latitude = models.DecimalField("위도", max_digits=11, decimal_places=8)
     longitude = models.DecimalField("경도", max_digits=11, decimal_places=8)

@@ -20,4 +20,9 @@ class Migration(migrations.Migration):
             name='longitude',
             field=models.DecimalField(decimal_places=8, max_digits=11, verbose_name='경도'),
         ),
+        migrations.AlterField(
+            model_name='station',
+            name='street_address',
+            field=models.CharField(max_length=100, null=True, blank=True, verbose_name='도로명 주소'),
+        ),
     ]
