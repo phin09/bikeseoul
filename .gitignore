@@ -1,7 +1,6 @@
 
 # Custom
 .env
-Pipfile
 Pipfile.lock
 .vscode
 
