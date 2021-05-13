@@ -1,0 +1,1 @@
+*/10 * * * * /usr/bin/curl --silent http://127.0.0.1:8001/stations/update &>/dev/null
