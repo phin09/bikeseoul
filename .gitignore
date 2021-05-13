@@ -1,6 +1,9 @@
 
 # Custom
 .env
+Pipfile
+Pipfile.lock
+.vscode
 
 # Created by https://www.toptal.com/developers/gitignore/api/linux,vscode,macos,vim,django,python,git
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,vscode,macos,vim,django,python,git
