@@ -8,11 +8,9 @@ from django.db import transaction, IntegrityError
 from django.http import JsonResponse
 
 from stations.models import Station, StationLog
-from core.views import query_debugger
 
 
 class NewStationListView(View):
-    @query_debugger
     def get(self, request):
         try:
             bikelist_seoul_api_url = "http://openapi.seoul.go.kr:8088/"\
@@ -39,11 +37,13 @@ class NewStationListView(View):
                 for p in threads:
                     result.extend(output.get())
                 
-                station_name_from_db = [i["name"] for i in list(Station.objects.values('name'))]
+                station_from_db = {i.name : i for i in list(Station.objects.all())}
                 log_to_create = []
 
                 for data in result:
-                    if data["stationName"] not in station_name_from_db:
+                    if data["stationName"] in station_from_db:
+                        station = station_from_db[data["stationName"]]
+                    else:
                         kakao_local_api_url = "https://dapi.kakao.com/v2/local/geo/coord2address.json?x="\
                             + data["stationLongitude"] + "&y=" + data["stationLatitude"]
                         kakao_headers = ({'authorization' : f'KakaoAK {os.environ.get("KAKAO_REST_API_KEY")}'})
@@ -63,11 +63,13 @@ class NewStationListView(View):
                             rack_cnt = data["rackTotCnt"],
                         )
 
+                        station = Station.objects.latest("id")
+
                     log_to_create.append(StationLog(
                         total_cnt = data["parkingBikeTotCnt"],
-                        station = Station.objects.get(name=data["stationName"]), # 쿼리 2천여개 원인. 수정 필요.
+                        station = station
                     ))
-
+                
                 StationLog.objects.bulk_create(log_to_create)
 
             return JsonResponse({'message':"SUCCESS"}, status=200)
