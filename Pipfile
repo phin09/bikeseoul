@@ -4,13 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+Django = "*"
 django-dotenv = "*"
 mysqlclient = "*"
 requests = "*"
 django-cors-headers = "*"
-bcrypt = "*"
-pyjwt = "*"
+PyJWT = "*"
 
 [dev-packages]
 

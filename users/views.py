@@ -2,13 +2,7 @@ import os
 import jwt
 import json
 
-from jwt import algorithms
-import bcrypt
-import pbkdf2
-
-from django.shortcuts import render
 from django.contrib.auth.hashers import check_password
-from django.contrib.auth import logout
 from django.http import JsonResponse
 
 from .models import User
